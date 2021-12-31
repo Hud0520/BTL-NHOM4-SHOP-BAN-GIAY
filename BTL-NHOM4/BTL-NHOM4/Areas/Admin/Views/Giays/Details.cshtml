@@ -1,0 +1,45 @@
+﻿@model BTL_ASP.Models.Giay
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="m-5 p-5 border border-dark rounded">
+    <h2>Chi tiết sản phẩm</h2>
+    <hr />
+    <table class="table table-hover table-bordered">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.TheLoai.TenTheLoai)</th>
+            <th>@Html.DisplayNameFor(model => model.TenGiay)</th>
+            <th>@Html.DisplayNameFor(model => model.Mau)</th>
+            <th>@Html.DisplayNameFor(model => model.KichThuoc)</th>
+            <th>@Html.DisplayNameFor(model => model.Gia)</th>
+            <th>@Html.DisplayNameFor(model => model.SoLuong)</th>
+            <th>@Html.DisplayNameFor(model => model.Anh)</th>
+            <th>@Html.DisplayNameFor(model => model.NgayTao)</th>
+            <th>@Html.DisplayNameFor(model => model.MoTa)</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.TheLoai.TenTheLoai)</td>
+            <td>@Html.DisplayFor(model => model.TenGiay)</td>
+            <td>@Html.DisplayFor(model => model.Mau)</td>
+            <td>@Html.DisplayFor(model => model.KichThuoc)</td>
+            <td>@Html.DisplayFor(model => model.Gia)</td>
+            <td>@Html.DisplayFor(model => model.SoLuong)</td>
+            <td>
+                @{
+                    //Lấy đường dẫn file ảnh
+                    string ImagePath = "~/wwwroot/sanphams/" + Model.Anh;
+                }
+                <img src="@Url.Content(ImagePath)" width="100" class="img-thumbnail" />
+            </td>
+            <td>@Html.DisplayFor(model => model.NgayTao)</td>
+            <td>@Html.DisplayFor(model => model.MoTa)</td>
+        </tr>
+    </table>
+    <p class="d-flex justify-content-between">
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.MaGiay }, new { @class = "btn btn-info text-white" })
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "text-decoration-none" })
+    </p>
+</div>

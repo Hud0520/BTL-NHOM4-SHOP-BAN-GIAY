@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<!-- Start Login Register Area -->
+<div class="htc__login__register bg__white ptb--130" style="background: rgba(0, 0, 0, 0) url(/wwwroot/img/bg/5.jpg) no-repeat scroll center center / cover ;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <ul class="login__register__menu" role="tablist">
+                    <li class="login "><a href="@Url.Action("Index","Login")" >Đăng Nhập</a></li>
+                    <li class="register active"><a href="@Url.Action("DangKy","Login")" >Đăng Ký</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Start Login Register Content -->
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="htc__login__register__wrap">
+
+                    <div id="register" role="tabpanel" class="single__tabs__panel tab-pane fade in active">
+                        <form class="login" method="post" action="@Url.Action("DangKy","Login")">
+                            <input type="text" class="pb--30" name="fname" placeholder="Họ" value="@ViewBag.fname">
+                            <span style="color: red; padding: 30px;" class="pb--30">@ViewData["LoiDK1"]</span>
+                            <input type="text" class="pb--30" name="lname" placeholder="Tên" value="@ViewBag.lname">
+                            <span style="color: red; padding: 30px;" class="pb--30">@ViewData["LoiDK2"]</span>
+                            <input type="email" class="pb--30" name="dkemail" placeholder="Email" value="@ViewBag.dkemail">
+                            <span style="color: red; padding: 30px;" class="pb--30">@ViewData["LoiDK3"]</span>
+                            <input type="password" class="pb--30" name="dkpass" placeholder="Mật khẩu" value="@ViewBag.dkpass">
+                            <span style="color: red; padding: 30px;" class="pb--30">@ViewData["LoiDK4"]</span>
+                            <input type="password" class="pb--30" name="cfpass" placeholder="Xác nhận mật khẩu" value="@ViewBag.cfpass">
+                            <span style="color: red; padding: 30px;" class="pb--30">@ViewData["LoiDK5"]</span>
+                            <div class="row text-center text--theme pb--30">
+                                <input type="text" name="type" value="dangky" hidden />
+                                <div class="htc__login__btn pt--30">
+                                    <a role="button" onclick="$('.login').submit();">Đăng ký</a>
+                                </div>
+                        </form>
+
+                    </div>
+                    <!-- End Single Content -->
+                </div>
+            </div>
+        </div>
+        <!-- End Login Register Content -->
+    </div>
+</div>
+<!-- End Login Register Area -->

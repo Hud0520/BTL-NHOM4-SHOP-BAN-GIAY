@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="container-fluid" style="position: relative;">
+    <div class="row" style="position: absolute; top: 150px; left: 600px;">
+        <h1 class="text-danger">Đăng nhập</h1>
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "m-2 border border-info rounded p-3 bg-light form-login" }))
+        {
+            <h5 style="color: red;">@ViewBag.ThongBao</h5>
+            @Html.ValidationSummary(true)
+            <div class="mb-3">
+                <label for="inputUserName" class="form-label">Tài khoản</label>
+                @Html.TextBox("TenDN", null, new { @class = "form-control" }) <span style="color: red;">@ViewData["Loi1"]</span>
+                @*<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">*@
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
+                @Html.Password("Matkhau", null, new { @class = "form-control" }) <span style="color: red;">@ViewData["Loi2"]</span>
+                @*<input type="password" class="form-control" id="exampleInputPassword1">*@
+            </div>
+            <div class="mb-3 form-check d-flex justify-content-between">
+                <div>
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Ghi nhớ tài khoản</label>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                </div>
+            </div>
+            <div class="mb-3">
+                <p><a href="#" class="text-decoration-none">Quên mật khẩu</a> </p>
+            </div>
+        }
+    </div>
+</div>
+<style>
+    .form-login {
+        width: 400px;
+        box-shadow: 3px 4px #0DCAF0;
+    }
+</style>

@@ -54,7 +54,7 @@
 /*---------------------------------------
   02. Scroll To Top
 ----------------------------------------*/
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 #scrollUp {
     border: 3px solid rgba(0, 0, 0, 0.1);
     border-radius: 100%;
@@ -634,7 +634,6 @@
     display: flex;
     justify-content: center;
     margin: 0 auto 51px;
-    max-width: 370px;
 }
 .login__register__menu li a {
     color: #000000;
@@ -652,7 +651,6 @@
 }
 .htc__login__register__wrap {
     margin: 0 auto;
-    max-width: 370px;
 }
 .login input {
     -moz-border-bottom-colors: none;
@@ -669,6 +667,7 @@
     line-height: 40px;
     padding: 0 15px;
     width: 100%;
+    margin:15px;
     background: transparent;
 }
 .login input + input {
@@ -1130,7 +1129,7 @@ h3.widget-title-modal {
 .blog__hover__info {
     bottom: 0;
     left: 0;
-    opacity: 0;
+    opacity: 0.75;
     padding: 30px 20px;
     position: absolute;
     transition: all 0.5s ease 0s;
@@ -1140,14 +1139,11 @@ h3.widget-title-modal {
 }
 .blog__post__time {
     left: 20px;
-    opacity: 0;
     position: absolute;
     top: 20px;
     transition: all 0.4s ease 0s;
 }
-.blog:hover .blog__post__time {
-    opacity: 1;
-}
+
 .blog__post__time {
     background: #fff none repeat scroll 0 0;
     height: 65px;
@@ -2006,7 +2002,7 @@ product__style--7
 }
 .single__filter {
     margin-top: 50px;
-    width: 50%;
+    width: 100%;
 }
 .filter__content {
     margin-top: -40px;

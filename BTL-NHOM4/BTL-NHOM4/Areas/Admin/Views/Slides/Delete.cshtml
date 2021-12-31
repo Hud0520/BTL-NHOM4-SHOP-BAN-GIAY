@@ -1,0 +1,43 @@
+﻿@model BTL_ASP.Models.Slide
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="m-5 p-5 border border-dark rounded">
+    <h2>Xóa sản phẩm</h2>
+
+    <h3 class="text-danger">Bạn có chắc chắn muốn xóa sản phẩm này không?</h3>
+    <hr />
+    <table class="table table-hover">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.Anh)</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.Id)</td>
+            <td>
+                @{
+                    //Lấy đường dẫn file ảnh
+                    string ImagePath = "~/wwwroot/slides/" + Model.Anh;
+                }
+                <img src="@Url.Content(ImagePath)" class="img-thumbnail" />
+            </td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color d-flex justify-content-between">
+            <div>
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </div>
+            <div>
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "text-decoration-none" })
+            </div>
+        </div>
+    }
+</div>

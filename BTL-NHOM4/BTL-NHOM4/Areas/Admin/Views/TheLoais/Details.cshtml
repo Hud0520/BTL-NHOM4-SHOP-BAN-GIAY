@@ -1,0 +1,29 @@
+﻿@model BTL_ASP.Models.TheLoai
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="m-5 p-5 border border-dark rounded">
+    <h2>Chi tiết danh mục</h2>
+    <hr />
+    <table class="table table-hover table-bordered">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.MoTa)</th>
+            <th>@Html.DisplayNameFor(model => model.NgayTao)</th>
+            <th>@Html.DisplayNameFor(model => model.NgayTao)</th>
+            <th>@Html.DisplayNameFor(model => model.TenTheLoai)</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.MoTa)</td>
+            <td>@Html.DisplayFor(model => model.NgayTao)</td>
+            <td>@Html.DisplayFor(model => model.NgayTao)</td>
+            <td>@Html.DisplayFor(model => model.TenTheLoai)</td>
+        </tr>
+    </table>
+    <p class="d-flex justify-content-between">
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.MaDanhMuc }, new { @class = "btn btn-info text-white" })
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "text-decoration-none" })
+    </p>
+</div>

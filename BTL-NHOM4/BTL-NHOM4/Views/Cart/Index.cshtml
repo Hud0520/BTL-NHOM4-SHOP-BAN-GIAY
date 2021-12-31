@@ -1,0 +1,104 @@
+﻿@model IList<BTL_NHOM4.Models.GioHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/wwwroot/img/bg/2.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Giỏ hàng</h2>
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" href="index.html">Trang chủ</a>
+                            <span class="brd-separetor">/</span>
+                            <span class="breadcrumb-item active">Giỏ hàng</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+<!-- cart-main-area start -->
+<div class="cart-main-area ptb--120 bg__white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                
+                    <div class="table-content table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="product-thumbnail">Ảnh</th>
+                                    <th class="product-name">Tên sản phẩm</th>
+                                    <th class="product-price">Giá</th>
+                                    <th class="product-quantity">Số lượng</th>
+                                    <th class="product-subtotal">Thành tiền</th>
+                                    <th class="product-remove" >Chỉnh sửa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <form action="@Url.Action("Update","Cart",new { iMaGiay = item.iMaGiay})" method="post">
+                                        <tr>
+                                            <td class="product-thumbnail"><a href="#"><img src="~/wwwroot/img/_product/@item.sAnhBia" alt="product img" /></a></td>
+                                            <td class="product-name"><a href="@Url.Action("ProductDetail", "Shop", new { id = item.iMaGiay })">@item.sTenGiay</a></td>
+                                            @{ string giafm = item.dDonGia.ToString("#,##0"); }
+                                            <td class="product-price"><span class="amount">@giafm VND</span></td>
+                                            <td class="product-quantity"><input type="number" name="sl" value="@item.iSoLuong" min="1" /></td>
+                                            @{ string tongfm = item.dThanhTien.ToString("#,##0"); }
+                                            <td class="product-subtotal">@tongfm VND</td>
+                                            <td width="150px"><button class="btn m--0 btn-success" type="submit">Cập nhật</button>&nbsp;
+                                            <button class="btn btn-danger" onclick="location.href='@Url.Action("XoaGioHang", "Cart", new { iMaGiay = item.iMaGiay })'">Xóa</button></td>
+                                        </tr>
+                                    </form>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-sm-7 col-xs-12">
+                            <div class="buttons-cart">
+                                <a href="@Url.Action("Index", "Shop")">Tiếp tục mua sắm</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-5 col-xs-12">
+                            <div class="cart_totals">
+                                <h2>Tạm Tính</h2>
+                                <table>
+                                    <tbody>
+                                        <tr class="cart-subtotal">
+                                            <th>Tổng tiền</th>
+                                            @{ double catong = (double)@Session["TongTien"]; }
+                                            <td><span class="amount">@catong.ToString("#,##0")VNĐ</span></td>
+                                        </tr>
+                                        <tr class="cart-subtotal">
+                                            <th>Thuế VAT (10%):</th>
+                                            @{ double vat = catong * 0.1 ; }
+                                            <td><span class="amount">@vat.ToString("#,##0")VNĐ</span></td>
+                                        </tr>
+                                        
+                                        <tr class="order-total">
+                                            <th>Tổng giá trị</th>
+                                            <td>
+                                                @{ double ttt = catong * 1.1;}
+                                                <strong><span class="amount">@ttt.ToString("#,##0")VNĐ</span></strong>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="wc-proceed-to-checkout">
+                                    <a href="@Url.Action("Checkout","Cart")">Mua Hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

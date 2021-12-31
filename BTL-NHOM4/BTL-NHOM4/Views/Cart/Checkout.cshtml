@@ -1,0 +1,156 @@
+﻿@using BTL_NHOM4.Models;
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+    KhachHang khDangNhap = (KhachHang)Session["userlogined"];
+
+}
+
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/wwwroot/img/bg/2.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Đặt hàng</h2>
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" href="index.html">Trnang chủ</a>
+                            <span class="brd-separetor">/</span>
+                            <span class="breadcrumb-item active">Đặt hàng</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+<!-- Start Checkout Area -->
+<section class="our-checkout-area ptb--120 bg__white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 ">
+                <div class="ckeckout-left-sidebar">
+                    <!-- Start Checkbox Area -->
+
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                        <span class="glyphicon glyphicon-menu-right text-success"></span> Danh sách sản phẩm
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="table-content table-responsive">
+                                        <table>
+                                            <thead>
+                                                <tr>
+
+                                                    <th class="product-name">Tên sản phẩm</th>
+                                                    <th class="product-price">Giá</th>
+                                                    <th class="product-quantity">Số lượng</th>
+                                                    <th class="product-subtotal">Thành tiền</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+
+                                                        <td class="product-subtotal">@item.sTenGiay</td>
+                                                        @{ string giafm = item.dDonGia.ToString("#,##0"); }
+                                                        <td class="product-price"><span class="amount">@giafm VND</span></td>
+                                                        <td class="product-subtotal">@item.iSoLuong</td>
+                                                        @{ string tongfm = item.dThanhTien.ToString("#,##0"); }
+                                                        <td class="product-subtotal">@tongfm VND</td>
+
+                                                    </tr>
+                                                }
+                                                <tr>
+                                                    <th colspan="3" class="text-right">Tổng thành tiền</th>
+                                                    @{ double catong = (double)@Session["TongTien"]; }
+                                                    <td class="product-subtotal">@catong.ToString("#,##0")VNĐ</td>
+                                                </tr>
+                                                <tr class="cart-subtotal">
+                                                    <th colspan="3" class="text-right">Thuế VAT (10%):</th>
+                                                    @{ double vat = catong * 0.1; }
+                                                    <td class="product-subtotal">@vat.ToString("#,##0")VNĐ</td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="3" class="text-right">Tổng giá trị</th>
+                                                    @{ double ttt = catong + vat;}
+                                                    <td class="product-subtotal">@ttt.ToString("#,##0")VNĐ</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                        <span class="glyphicon glyphicon-menu-right text-info"></span> Thông tin giao hàng
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <h2 class="text-center ptb--10">Xác nhận địa chỉ</h2>
+                                    <form action="@Url.Action("DatHang","Cart")">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputEmail4">Họ</label>
+                                                <input type="text" class="form-control" id="inputEmail4" name="fname" placeholder="Họ" value="@khDangNhap.Ho" readonly>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputPassword4">Tên</label>
+                                                <input type="text" class="form-control" id="inputPassword4" name="lname" placeholder="Tên" value="@khDangNhap.Ten" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputEmail4">Email</label>
+                                                <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email" value="@khDangNhap.Email" readonly>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputPassword4">Số điện thoại</label>
+                                                <input type="tel" class="form-control" id="inputPassword4" name="phone" placeholder="Password" value="@khDangNhap.SDT">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="inputAddress">Địa chỉ nhận hàng</label>
+                                            <input type="text" class="form-control" id="inputAddress" name="address" placeholder="1234 Main St" value="@khDangNhap.DiaChi">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="inputAddress2">Ghi chú</label>
+                                            <input type="text" class="form-control" id="inputAddress2" name="ghichu" placeholder="Apartment, studio, or floor">
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <div class="form-check ">
+                                                <input class="form-check-input" type="checkbox" id="gridCheck">
+                                                <label class="form-check-label" for="gridCheck">
+                                                    Lưu địa chỉ nhận hàng này làm mặc định
+                                                </label>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Đặt hàng</button>
+                                        </div>
+
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+        </div>
+</section>
+

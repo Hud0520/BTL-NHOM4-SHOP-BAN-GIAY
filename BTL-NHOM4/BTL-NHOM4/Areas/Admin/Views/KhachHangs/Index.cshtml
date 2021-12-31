@@ -1,0 +1,91 @@
+﻿@model PagedList.IPagedList<BTL_ASP.Models.KhachHang>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid m-2">
+    <h2>Quản lý khách hàng</h2>
+    <div class="d-flex justify-content-start my-4">
+        <span class="btn btn-success" style="margin-right: 40px;">
+            @Html.ActionLink("Tạo mới", "Create", null, new { @class = "text-white text-decoration-none" })
+        </span>
+        @using (Html.BeginForm())
+        {
+            <span>
+                Tìm tên khách hàng:
+                <input type="text" name="searchString" value="" placeholder="Nhập tên khách hàng" style="width: 300px;" />
+                <button class="px-2 bg-light border-0" type="submit"><i class="fas fa-search"></i></button>
+            </span>
+        }
+    </div>
+    <table class="table border-0 table-bordered text-center">
+        <tr>
+            <th>
+                Họ
+            </th>
+            <th>
+                @Html.ActionLink("Tên", "Index", new { sortOrder = ViewBag.SapTheoTen }, new { @class = "text-decoration-none text-dark" })
+            </th>
+            <th>
+                Tuổi
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Quản trị viên
+            </th>
+            <th>
+                Mã khách hàng
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th width="140"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ho)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tuoi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaChi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuanTriVien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaKhachHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SDT)
+                </td>
+                <td>
+                    @Html.ActionLink("Xem", "Details", new { id = item.MaKhachHang }, new { @class = "text-decoration-none text-primary" }) |
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaKhachHang }, new { @class = "text-decoration-none text-warning" }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaKhachHang }, new { @class = "text-decoration-none text-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount @Html.PagedListPager(Model, page => Url.Action("", new { page }))
+</div>

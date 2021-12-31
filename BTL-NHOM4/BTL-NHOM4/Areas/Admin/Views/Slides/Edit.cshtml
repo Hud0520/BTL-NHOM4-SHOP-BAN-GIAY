@@ -1,0 +1,39 @@
+﻿@model BTL_ASP.Models.Slide
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var ImagePath = "~/wwwroot/slides/" + Model.Anh;
+}
+
+@using (Html.BeginForm("Edit", "Slides", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal m-5">
+        <h4>Chỉnh sửa slide</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="d-flex justify-content-between mt-2 form-group">
+            @Html.LabelFor(model => model.Anh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <img src="@Url.Content(@ImagePath)" id="output_image" class="img-rounded" width="180" height="200" />
+                <p class="mt-2"><label class="btn btn-info text-white" for="ufile" style="cursor: pointer;">Chọn file ảnh</label></p>
+                <input type="file" name="ImageFile" id="ufile" value="" style="display: none;" onchange="loadFile(event)" />
+            </div>
+        </div>
+
+        <div class="form-group mt-2">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <input type="submit" value="Lưu" class="btn btn-success" />
+                </div>
+                <div>
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "text-decoration-none" })
+                </div>
+            </div>
+        </div>
+    </div>
+}

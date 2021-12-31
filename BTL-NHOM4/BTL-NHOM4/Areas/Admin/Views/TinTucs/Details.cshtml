@@ -1,0 +1,50 @@
+﻿@model BTL_ASP.Models.TinTuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div>
+    <h2>Chi tiết tin tức</h2>
+    <hr />
+    <table class="table table-hover table-bordered">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.MaTinTuc)</th>
+            <th>@Html.DisplayNameFor(model => model.TieuDe)</th>
+            <th>@Html.DisplayNameFor(model => model.NgayTao)</th>
+            <th>@Html.DisplayNameFor(model => model.NgaySua)</th>
+            <th>@Html.DisplayNameFor(model => model.link)</th>
+            <th>@Html.DisplayNameFor(model => model.NoiDung)</th>
+            <th>@Html.DisplayNameFor(model => model.AnhTieuDe)</th>
+            <th>@Html.DisplayNameFor(model => model.NguoiTao)</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.MaTinTuc)</td>
+            <td>@Html.DisplayFor(model => model.TieuDe)</td>
+            <td>@Html.DisplayFor(model => model.NgayTao)</td>
+            <td>@Html.DisplayFor(model => model.NgaySua)</td>
+            <td>@Html.DisplayFor(model => model.link)</td>
+            <td class="noidung">@Html.DisplayFor(model => model.NoiDung)</td>
+            <td>
+                @{
+                    //Lấy đường dẫn file ảnh
+                    string ImagePath = "~/wwwroot/anhtieudes/" + Model.AnhTieuDe;
+                }
+                <img src="@Url.Content(ImagePath)" width="100" class="img-thumbnail" />
+            </td>
+            <td>@Html.DisplayFor(model => model.NguoiTao)</td>
+        </tr>
+    </table>
+    <p class="d-flex justify-content-between">
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.MaTinTuc }, new { @class = "btn btn-info text-white" })
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "text-decoration-none" })
+    </p>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".noidung").text(function (i, text) {
+            return text.length > 100 ? text.substr(0, text.lastIndexOf(' ', 300)) + '...' : text;
+        });
+    });
+</script>

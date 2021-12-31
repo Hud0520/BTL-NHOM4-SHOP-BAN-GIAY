@@ -1,0 +1,76 @@
+﻿@model BTL_NHOM4.Models.Giay
+
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<section class="htc__product__details pt--50 pb--100 bg__white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                <div class="product__details__container">
+                    <img src="~/wwwroot/img/_product/@Model.Anh" alt="@Model.TenGiay" />
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 smt-30 xmt-30">
+                <div class="htc__product__details__inner">
+                    <div class="pro__detl__title">
+                        <h2>@Model.TenGiay</h2>
+                    </div>
+                    <div class="pro__details">
+                        <p>Số lượng còn:@Model.SoLuong</p>
+                    </div>
+                    <ul class="pro__dtl__prize">
+                        <li>@Model.Gia. VNĐ</li>
+                    </ul>
+                    <div class="pro__dtl__size">
+                        <p>Kích cỡ: @Model.KichThuoc</p>
+                    </div>
+                    <form id='myform' method='POST' action='@Url.Action("ThemGioHang","Cart",new { iMaGiay = Model.MaGiay, url="/Cart/Index" })'>
+                        <div class="product-action-wrap">
+                            <div class="prodict-statas"><span>Quantity :</span></div>
+                            <div class="product-quantity">
+
+                                <div class="product-quantity">
+                                    <div class="cart-plus-minus">
+                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" max="@Model.SoLuong">
+                                    </div>
+                                </div>
+                    
+                            </div>
+                        </div>
+                            <ul class="pro__dtl__btn">
+                                <li class="buy__now__btn"><button type="submit"><a>Mua ngay</a></button></li>
+                                <li><a href="#"><span class="ti-heart"></span></a></li>
+                                <li><a href="#"><span class="ti-email"></span></a></li>
+                            </ul>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Product Details -->
+<!-- Start Product tab -->
+<section class="htc__product__details__tab bg__white pb--120">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                <ul class="product__deatils__tab mb--60" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#description" role="tab" data-toggle="tab">Chi tiết sản phẩm</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product__details__tab__content">
+                    @Html.Raw(@Model.MoTa);
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

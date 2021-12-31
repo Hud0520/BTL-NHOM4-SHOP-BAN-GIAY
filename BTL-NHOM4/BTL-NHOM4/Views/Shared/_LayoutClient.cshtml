@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using BTL_NHOM4.Models;
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -8,13 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
 
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="~/fa.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 
     <!-- All css files are included here. -->
     <!-- Bootstrap fremwork main css -->
-    <link rel="stylesheet" href="~/wwwroot/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/wwwroot/css/bootstrap.css">
     <!-- This core.css file contents all plugings css file. -->
     <link rel="stylesheet" href="~/wwwroot/css/core.css">
     <!-- Theme shortcodes/elements style -->
@@ -25,7 +26,6 @@
     <link rel="stylesheet" href="~/wwwroot/css/responsive.css">
     <!-- User style -->
     <link rel="stylesheet" href="~/wwwroot/css/custom.css">
-
 
     <!-- Modernizr JS -->
     <script src="~/wwwroot/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -38,10 +38,10 @@
             <div id="sticky-header-with-topbar" class="mainmenu__area sticky__header">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
+                        <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3 p--0">
                             <div class="logo">
                                 <a href="@Url.Action("Index","Home")">
-                                    <h1>SShop.</h1>
+                                    <div style="background: #ff4136; padding:5px 30px;font-size:40px; font-family: 'Bebas Neue', cursive; color: white; height:70px">SShop .</div>
                                 </a>
                             </div>
                         </div>
@@ -49,60 +49,45 @@
                         <div class="col-md-8 col-lg-8 col-sm-6 col-xs-6">
                             <nav class="mainmenu__nav hidden-xs hidden-sm">
                                 <ul class="main__menu">
-                                    <li class="drop"><a href="@Url.Action("Index","Home")">Home</a></li>
+                                    <li class="drop"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
                                     <li class="drop">
-                                        <a href="blog.html">Blog</a>
+                                        <a href="@Url.Action("Index","Blog")">Tin tức</a>
                                     </li>
                                     <li class="drop">
-                                        <a href="shop.html">Shop</a>
+                                        <a href="@Url.Action("Index","Shop")">Cửa hàng</a>
                                     </li>
-                                <li><a href="contact.html">contact</a></li>
+                                <li><a href="@Url.Action("Index","Contact")">Liên hệ</a></li>
                                 </ul>
                             </nav>
                             <div class="mobile-menu clearfix visible-xs visible-sm">
                                 <nav id="mobile_dropdown">
-                                    <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li>
-                                            <a href="#">portfolio</a>
-                                            <ul>
-                                                <li><a href="portfolio-card-box-2.html">portfolio</a></li>
-                                                <li><a href="single-portfolio.html">Single portfolio</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="blog.html">blog</a>
-                                            <ul>
-                                                <li><a href="blog.html">blog 3 column</a></li>
-                                                <li><a href="blog-details.html">Blog details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">pages</a>
-                                            <ul>
-                                                <li><a href="about.html">about</a></li>
-                                                <li><a href="customer-review.html">customer review</a></li>
-                                                <li><a href="shop.html">shop</a></li>
-                                                <li><a href="shop-sidebar.html">shop sidebar</a></li>
-                                                <li><a href="product-details.html">product details</a></li>
-                                                <li><a href="cart.html">cart</a></li>
-                                                <li><a href="wishlist.html">wishlist</a></li>
-                                                <li><a href="checkout.html">checkout</a></li>
-                                                <li><a href="team.html">team</a></li>
-                                                <li><a href="login-register.html">login & register</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html">contact</a></li>
-                                    </ul>
+                                    
                                 </nav>
                             </div>
                         </div>
                         <!-- End MAinmenu Ares -->
-                        <div class="col-md-2 col-sm-4 col-xs-3">
-                            <ul class="menu-extra">
-                                <li class="search search__open hidden-xs"><span class="ti-search"></span></li>
-                                <li><a href="login-register.html"><span class="ti-user"></span></a></li>
-                                <li class="cart__menu"><span class="ti-shopping-cart"></span></li>
+                        <div class="col-md-2 col-sm-4 col-xs-3 p--0">
+                            <ul class="main__menu">
+                                <li class="search search__open hidden-xs"><a><span class="ti-search"></span></a></li>
+                                <li class="drop">
+                                    <a><span class="ti-user"></span></a>
+                                    <ul class="dropdown">
+                                        @{ KhachHang cu = (KhachHang)Session["userLogined"];}
+                                        @if ( cu== null)
+                                        {
+                                            <li><a href="@Url.Action("Index","Login")">Đăng nhập<span><i class="ti-shift-right"></i></span></a></li>
+                                        }
+                                        else
+                                        {
+                                           
+                                            <li class="text-primary text-center p--20">Xin chào <b>@cu.Ho&nbsp;@cu.Ten</b> </li>
+                                            <li><a href="@Url.Action("Index","Login")"><span class="ti-user"></span>Cá nhân</a></li>
+                                            <li><a href="@Url.Action("DangXuat","Login")">Đăng xuất<span><i class="ti-shift-left"></i></span></a></li>
+                                        }
+
+                                    </ul>
+                                </li>
+                                <li class="cart__menu"><a><span class="ti-shopping-cart"></span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -122,8 +107,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="search__inner">
-                                <form action="#" method="get">
-                                    <input placeholder="Search here... " type="text">
+                                <form action="@Url.Action("Index","Shop")" method="get">
+                                    <input type="text" placeholder="Nhập từ khóa ... " name="keyword" >
                                     <button type="submit"></button>
                                 </form>
                                 <div class="search__close__btn">
@@ -141,46 +126,27 @@
                     <div class="offsetmenu__close__btn">
                         <a href="#"><i class="zmdi zmdi-close"></i></a>
                     </div>
-                    <div class="shp__cart__wrap">
-                        <div class="shp__single__product">
-                            <div class="shp__pro__thumb">
-                                <a href="#">
-                                    <img src="~/wwwroot/img/product/sm-img/1.jpg" alt="product images">
-                                </a>
-                            </div>
-                            <div class="shp__pro__details">
-                                <h2><a href="product-details.html">BO&Play Wireless Speaker</a></h2>
-                                <span class="quantity">QTY: 1</span>
-                                <span class="shp__price">$105.00</span>
-                            </div>
-                            <div class="remove__btn">
-                                <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                            </div>
-                        </div>
-                        <div class="shp__single__product">
-                            <div class="shp__pro__thumb">
-                                <a href="#">
-                                    <img src="~/wwwroot/img/product/sm-img/2.jpg" alt="product images">
-                                </a>
-                            </div>
-                            <div class="shp__pro__details">
-                                <h2><a href="product-details.html">Brone Candle</a></h2>
-                                <span class="quantity">QTY: 1</span>
-                                <span class="shp__price">$25.00</span>
-                            </div>
-                            <div class="remove__btn">
-                                <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    @{ 
+                        List<GioHang> ls = (List<GioHang>)Session["GioHang"];}
+                    @if (ls == null || ls.Count == 0)
+                    {
+                        <div class="text-center text-info">Giỏ hàng trống</div>
+                    }
+                    else
+                    {
                     <ul class="shoping__total">
-                        <li class="subtotal">Subtotal:</li>
-                        <li class="total__price">$130.00</li>
+                        <li class="subtotal">Tổng sản phẩm:</li>
+                        <li class="total__price">@Session["TongSoLuong"].ToString()</li>
+                    </ul>
+                    <ul class="shoping__total">
+                        <li class="subtotal">Tổng tiền:</li>
+                        <li class="total__price">@String.Format("{0:#,##0}", Session["TongTien"])VND</li>
                     </ul>
                     <ul class="shopping__btn">
-                        <li><a href="cart.html">View Cart</a></li>
-                        <li class="shp__checkout"><a href="checkout.html">Checkout</a></li>
+                        <li><a href="@Url.Action("Index", "Cart")">Giỏ hàng</a></li>
+                        <li class="shp__checkout"><a href="@Url.Action("Checkout", "Cart")">Thanh toán</a></li>
                     </ul>
+                    }
                 </div>
             </div>
             <!-- End Cart Panel -->

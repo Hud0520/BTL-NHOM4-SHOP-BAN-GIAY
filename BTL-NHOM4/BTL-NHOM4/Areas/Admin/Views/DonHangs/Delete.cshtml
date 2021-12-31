@@ -1,0 +1,45 @@
+﻿@model BTL_ASP.Models.DonHang
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="m-5 p-5 border border-dark rounded">
+    <h2>Xóa đơn hàng</h2>
+
+    <h3 class="text-danger">Bạn có chắc chắn muốn xóa đơn hàng này không?</h3>
+    <hr />
+    <table class="table table-hover">
+        <tr>
+            <th>Họ tên khách hàng</th>
+            <th>@Html.DisplayNameFor(model => model.MaDonHang)</th>
+            <th>@Html.DisplayNameFor(model => model.DiaChi)</th>
+            <th>@Html.DisplayNameFor(model => model.GhiChu)</th>
+            <th>@Html.DisplayNameFor(model => model.TrangThai)</th>
+            <th>@Html.DisplayNameFor(model => model.NgayTao)</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.KhachHang.Ho) @Html.DisplayFor(model => model.KhachHang.Ten)</td>
+            <td>@Html.DisplayFor(model => model.MaDonHang)</td>
+            <td>@Html.DisplayFor(model => model.DiaChi)</td>
+            <td>@Html.DisplayFor(model => model.GhiChu)</td>
+            <td>@Html.DisplayFor(model => model.TrangThai)</td>
+            <td>@Html.DisplayFor(model => model.NgayTao)</td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color d-flex justify-content-between">
+            <div>
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </div>
+            <div>
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "text-decoration-none" })
+            </div>
+        </div>
+    }
+</div>

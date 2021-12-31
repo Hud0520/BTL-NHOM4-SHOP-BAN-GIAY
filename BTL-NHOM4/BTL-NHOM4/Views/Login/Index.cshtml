@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<!-- Start Login Register Area -->
+<div class="htc__login__register bg__white ptb--130" style="background: rgba(0, 0, 0, 0) url(/wwwroot/img/bg/5.jpg) no-repeat scroll center center / cover ;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <ul class="login__register__menu" role="tablist">
+                    <li class="login active"><a href="@Url.Action("Index","Login")" >Đăng Nhập</a></li>
+                    <li class="register "><a href="@Url.Action("DangKy","Login")" >Đăng Ký</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Start Login Register Content -->
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="htc__login__register__wrap">
+                    <!-- Start Single Content -->
+                    <div id="login" role="tabpanel" class="single__tabs__panel tab-pane fade in active">
+
+                        <form class="login" id="loginform" method="post" action="@Url.Action("Index","Login")">
+                            <input type="email"  class="pb--30" name="userName" placeholder="Email" value="@ViewBag.tendn">
+                            <span style="color: red; padding: 30px;" class="pb--30">@ViewData["Loi1"]</span>
+                            <input type="password" class="pb--30" name="passWord" placeholder="Mật khẩu" value="@ViewBag.mk">
+                            <span style="color: red; padding: 30px;" class="pb--30">@ViewData["Loi2"]</span>
+                            <div class="row text-center text--theme pb--30">
+                            <input type="text" name="type" value="dangnhap" hidden />
+                                <a href="#">Quên mật khẩu !</a>
+                            </div>
+
+                            <div class="htc__login__btn pt--30">
+                                <a role="button" onclick="$('#loginform').submit();">Đăng Nhập</a>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- End Login Register Content -->
+    </div>
+</div>
+<!-- End Login Register Area -->
