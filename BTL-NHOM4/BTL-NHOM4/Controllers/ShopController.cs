@@ -45,7 +45,7 @@ namespace BTL_NHOM4.Controllers
             }
         }
 
-        public ActionResult ProductDetail(int id)
+        public ActionResult ProductDetail(int? id)
         {
             Giay dt = db.Giay.FirstOrDefault(g => g.MaGiay == id);
             if(dt != null)

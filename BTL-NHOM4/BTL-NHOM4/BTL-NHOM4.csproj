@@ -155,11 +155,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\DonHang.cs" />
+    <Compile Include="Models\DonHangDao.cs" />
     <Compile Include="Models\Giay.cs" />
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\KhachHang.cs" />
@@ -767,7 +769,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Assets\img\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Assets\ckeditor\bender-runner.config.json" />
@@ -864,6 +865,8 @@
     <Content Include="wwwroot\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="wwwroot\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Views\Login\DangKy.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
