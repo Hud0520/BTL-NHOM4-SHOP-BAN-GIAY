@@ -1,7 +1,8 @@
-namespace BTL_NHOM4.Models
+﻿namespace BTL_NHOM4.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -12,6 +13,7 @@ namespace BTL_NHOM4.Models
         public int Id { get; set; }
 
         [StringLength(50)]
+        [DisplayName("Ảnh")]
         public string Anh { get; set; }
     }
 }
