@@ -56,7 +56,7 @@
                                     <li class="drop">
                                         <a href="@Url.Action("Index","Shop")">Cửa hàng</a>
                                     </li>
-                                <li><a href="@Url.Action("Index","Contact")">Liên hệ</a></li>
+                                <li><a href="@Url.Action("Contact","Home")">Liên hệ</a></li>
                                 </ul>
                             </nav>
                             <div class="mobile-menu clearfix visible-xs visible-sm">
@@ -173,7 +173,7 @@
                                                     <i class="zmdi zmdi-pin"></i>
                                                 </div>
                                                 <div class="address-text">
-                                                    <p>194 Main Rd T, FS Rayed <br> VIC 3057, USA</p>
+                                                    <p>239, Minh Khai, Từ Liêm, Hà Nội.</p>
                                                 </div>
                                             </li>
                                             <li>
@@ -181,7 +181,7 @@
                                                     <i class="zmdi zmdi-email"></i>
                                                 </div>
                                                 <div class="address-text">
-                                                    <a href="#"> info@example.com</a>
+                                                    <a href="#"> info@sshop.vn</a>
                                                 </div>
                                             </li>
                                             <li>
@@ -189,7 +189,7 @@
                                                     <i class="zmdi zmdi-phone-in-talk"></i>
                                                 </div>
                                                 <div class="address-text">
-                                                    <p>+012 345 678 102 </p>
+                                                    <p>+84 869 68 3979  </p>
                                                 </div>
                                             </li>
                                         </ul>
@@ -206,37 +206,26 @@
                             <!-- Start Single Footer Widget -->
                             <div class="col-md-3 col-lg-2 col-sm-6 smt-30 xmt-30">
                                 <div class="ft__widget">
-                                    <h2 class="ft__title">Categories</h2>
+                                    <h2 class="ft__title">Danh mục</h2>
                                     <ul class="footer-categories">
-                                        <li><a href="shop-sidebar.html">Men</a></li>
-                                        <li><a href="shop-sidebar.html">Women</a></li>
-                                        <li><a href="shop-sidebar.html">Accessories</a></li>
-                                        <li><a href="shop-sidebar.html">Shoes</a></li>
-                                        <li><a href="shop-sidebar.html">Dress</a></li>
-                                        <li><a href="shop-sidebar.html">Denim</a></li>
+                                        <li><a href="@Url.Action("Index","Shop", new {theloai =1})">Giày thể thao</a></li>
+                                        <li><a href="@Url.Action("Index","Shop", new {theloai =2})">Giày chạy bộ</a></li>
+                                        <li><a href="@Url.Action("Index","Shop", new {theloai =3})">Giày tây</a></li>
+                                        <li><a href="@Url.Action("Index","Shop", new {theloai =4})">Sandal</a></li>
+                                        <li><a href="@Url.Action("Index","Shop", new {theloai =5})">Dép</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <!-- Start Single Footer Widget -->
                             <div class="col-md-3 col-lg-2 col-sm-6 smt-30 xmt-30">
-                                <div class="ft__widget">
-                                    <h2 class="ft__title">Infomation</h2>
-                                    <ul class="footer-categories">
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="contact.html">Contact Us</a></li>
-                                        <li><a href="#">Terms & Conditions</a></li>
-                                        <li><a href="#">Returns & Exchanges</a></li>
-                                        <li><a href="#">Shipping & Delivery</a></li>
-                                        <li><a href="#">Privacy Policy</a></li>
-                                    </ul>
-                                </div>
+                                
                             </div>
                             <!-- Start Single Footer Widget -->
                             <div class="col-md-3 col-lg-3 col-lg-offset-1 col-sm-6 smt-30 xmt-30">
                                 <div class="ft__widget">
-                                    <h2 class="ft__title">Newsletter</h2>
+                                    <h2 class="ft__title">Thư mới</h2>
                                     <div class="newsletter__form">
-                                        <p>Subscribe to our newsletter and get 10% off your first purchase .</p>
+                                        <p>Theo dõi chúng tôi</p>
                                         <div class="input__box">
                                             <div id="mc_embed_signup">
                                                 <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
@@ -267,14 +256,14 @@
                                 <div class="copyright__inner">
                                     <div class="copyright">
                                         <p>
-                                            © 2021 <a href="https://freethemescloud.com/">Free themes Cloud</a>
+                                            © 2021 <a href="https://freethemescloud.com/">Nhom4</a>
                                             All Right Reserved.
                                         </p>
                                     </div>
                                     <ul class="footer__menu">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="shop.html">Product</a></li>
-                                        <li><a href="contact.html">Contact Us</a></li>
+                                        <li><a href="index.html">Trang chủ</a></li>
+                                        <li><a href="shop.html">Cửa hàng</a></li>
+                                        <li><a href="contact.html">Liên hệ</a></li>
                                     </ul>
                                 </div>
                             </div>

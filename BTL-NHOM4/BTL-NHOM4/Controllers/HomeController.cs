@@ -26,5 +26,10 @@ namespace BTL_NHOM4.Controllers
             ViewBag.TinTuc = blog;
             return View(ViewBag);
         }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
     }
 }
