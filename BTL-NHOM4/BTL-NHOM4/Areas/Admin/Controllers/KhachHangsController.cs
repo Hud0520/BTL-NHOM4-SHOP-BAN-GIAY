@@ -182,7 +182,8 @@ namespace BTL_ASP.Areas.Admin.Controllers
             {
                 //Gán giá trị cho đối tượng được tạo mới (kh)
                 KhachHang kh = db.KhachHangs.SingleOrDefault(n => n.Email == tendn &&
-                                                                    n.MatKhau == matkhau);
+                                                                    n.MatKhau == matkhau &&
+                                                                    n.QuanTriVien == true);
                 if (kh != null)
                 {
                     //ViewBag.ThongBao = "Chúc mừng đăng nhập thành công";
