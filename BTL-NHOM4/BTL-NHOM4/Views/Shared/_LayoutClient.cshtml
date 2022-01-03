@@ -75,13 +75,13 @@
                                         @{ KhachHang cu = (KhachHang)Session["userLogined"];}
                                         @if ( cu== null)
                                         {
-                                            <li><a href="@Url.Action("Index","Login")">Đăng nhập<span><i class="ti-shift-right"></i></span></a></li>
+                                            <li><a href="@Url.Action("Index","Login")">Đăng nhập / Đăng ký<span><i class="ti-shift-right"></i></span></a></li>
                                         }
                                         else
                                         {
                                            
                                             <li class="text-primary text-center p--20">Xin chào <b>@cu.Ho&nbsp;@cu.Ten</b> </li>
-                                            <li><a href="@Url.Action("Index","Login")"><span class="ti-user"></span>Cá nhân</a></li>
+                                            <li><a href="@Url.Action("Index","User")"><span class="ti-user"></span>Cá nhân</a></li>
                                             <li><a href="@Url.Action("DangXuat","Login")">Đăng xuất<span><i class="ti-shift-left"></i></span></a></li>
                                         }
 

@@ -21,6 +21,5 @@ namespace BTL_NHOM4.Models
 
         public float TongTien { get; set; }
 
-
     }
 }
