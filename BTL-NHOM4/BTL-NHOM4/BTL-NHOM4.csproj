@@ -726,6 +726,7 @@
     <Content Include="wwwroot\img\bg\4.jpg" />
     <Content Include="wwwroot\img\bg\5.jpg" />
     <Content Include="wwwroot\img\bg\6.jpg" />
+    <Content Include="wwwroot\img\bg\background.jpg" />
     <Content Include="wwwroot\img\icons\ajax-loader.gif" />
     <Content Include="wwwroot\img\icons\close-20.png" />
     <Content Include="wwwroot\img\icons\close.png" />

@@ -86,7 +86,7 @@ namespace BTL_ASP.Areas.Admin.Controllers
                     {
                         string FileName = System.IO.Path.GetFileName(f.FileName);
 
-                        string UploadPath = Server.MapPath("~/wwwroot/sanphams/" + FileName);
+                        string UploadPath = Server.MapPath("~/wwwroot/img/_product/" + FileName);
 
                         f.SaveAs(UploadPath);
 
@@ -139,7 +139,7 @@ namespace BTL_ASP.Areas.Admin.Controllers
                     {
                         string FileName = System.IO.Path.GetFileName(f.FileName);
 
-                        string UploadPath = Server.MapPath("~/wwwroot/sanphams/" + FileName);
+                        string UploadPath = Server.MapPath("~/wwwroot/img/_product/" + FileName);
 
                         f.SaveAs(UploadPath);
 

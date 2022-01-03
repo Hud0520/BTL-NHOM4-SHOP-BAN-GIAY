@@ -43,49 +43,49 @@
             @Html.LabelFor(model => model.TrangThai, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <select class="form-select" name="TrangThai" aria-label="Default select example" style="width: 300px;">
-                    @if (ViewBag.trangthai.Equals("Đang chuẩn bị hàng"))
+                    @if (ViewBag.trangthai.Equals("0"))
                     {
-                        <option value="Đang chuẩn bị hàng" selected>Đang chuẩn bị hàng</option>
+                        <option value="0" selected>Đơn hàng đang chờ xử lý</option>
                     }
                     else
                     {
-                        <option value="Đang chuẩn bị hàng">Đang chuẩn bị hàng</option>
+                        <option value="0">Đơn hàng đang chờ xử lý</option>
                     }
 
-                    @if (ViewBag.trangthai.Equals("Đang giao hàng"))
+                    @if (ViewBag.trangthai.Equals("1"))
                     {
-                        <option value="Đang giao hàng" selected>Đang giao hàng</option>
+                        <option value="1" selected>Đang chuẩn bị hàng</option>
                     }
                     else
                     {
-                        <option value="Đang giao hàng">Đang giao hàng</option>
+                        <option value="1">Đang chuẩn bị hàng</option>
                     }
 
-                    @if (ViewBag.trangthai.Equals("Đã nhận được hàng"))
+                    @if (ViewBag.trangthai.Equals("2"))
                     {
-                        <option value="Đã nhận được hàng" selected>Đã nhận được hàng</option>
+                        <option value="2" selected>Đang giao hàng</option>
                     }
                     else
                     {
-                        <option value="Đã nhận được hàng">Đã nhận được hàng</option>
+                        <option value="2">Đang giao hàng</option>
                     }
 
-                    @if (ViewBag.trangthai.Equals("Shop hủy đơn hàng"))
+                    @if (ViewBag.trangthai.Equals("3"))
                     {
-                        <option value="Shop hủy đơn hàng" selected>Shop hủy đơn hàng</option>
+                        <option value="3" selected>Đã nhận hàng</option>
                     }
                     else
                     {
-                        <option value="Shop hủy đơn hàng">Shop hủy đơn hàng</option>
+                        <option value="3">Đã nhận hàng</option>
                     }
 
-                    @if (ViewBag.trangthai.Equals("Khách hủy đơn hàng"))
+                    @if (ViewBag.trangthai.Equals("4"))
                     {
-                        <option value="Khách hủy đơn hàng" selected>Khách hủy đơn hàng</option>
+                        <option value="4" selected>Đơn hàng bị hủy</option>
                     }
                     else
                     {
-                        <option value="Khách hủy đơn hàng">Khách hủy đơn hàng</option>
+                        <option value="4">Đơn hàng bị hủy</option>
                     }
                 </select>
                 @Html.ValidationMessageFor(model => model.TrangThai, "", new { @class = "text-danger" })

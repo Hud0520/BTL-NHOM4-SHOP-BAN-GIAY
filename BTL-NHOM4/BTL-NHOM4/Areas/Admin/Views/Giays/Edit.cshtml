@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-    var ImagePath = "~/wwwroot/sanphams/" + Model.Anh;
+    var ImagePath = "~/wwwroot/img/_product/" + Model.Anh;
 }
 
 @using (Html.BeginForm("Edit", "Giays", FormMethod.Post, new { enctype = "multipart/form-data" }))
