@@ -85,4 +85,5 @@ D:\HAUI\K7\LTW\BTL-NHOM4-SHOP-BAN-GIAY\BTL-NHOM4\BTL-NHOM4\bin\EntityFramework.S
 D:\HAUI\K7\LTW\BTL-NHOM4-SHOP-BAN-GIAY\BTL-NHOM4\BTL-NHOM4\bin\EntityFramework.xml
 D:\HAUI\K7\LTW\BTL-NHOM4-SHOP-BAN-GIAY\BTL-NHOM4\BTL-NHOM4\bin\EntityFramework.SqlServer.xml
 D:\HAUI\K7\LTW\BTL-NHOM4-SHOP-BAN-GIAY\BTL-NHOM4\BTL-NHOM4\obj\Debug\BTL-NHOM4.csproj.AssemblyReference.cache
-
+C:\Users\toanv\OneDrive\Máy tính\BTL-NHOM4-SHOP-BAN-GIAY\BTL-NHOM4\BTL-NHOM4\obj\Debug\BTL-NHOM4.csproj.AssemblyReference.cache
+C:\Users\toanv\OneDrive\Máy tính\BTL-NHOM4-SHOP-BAN-GIAY\BTL-NHOM4\BTL-NHOM4\obj\Debug\BTL-NHOM4.csproj.CoreCompileInputs.cache
