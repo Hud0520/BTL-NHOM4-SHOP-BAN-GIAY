@@ -22,7 +22,18 @@
             <td>@Html.DisplayFor(model => model.MaDonHang)</td>
             <td>@Html.DisplayFor(model => model.DiaChi)</td>
             <td>@Html.DisplayFor(model => model.GhiChu)</td>
-            <td>@Html.DisplayFor(model => model.TrangThai)</td>
+            @{ 
+                string tt = "";
+                switch (Model.TrangThai)
+                {
+                    case "0": tt = "Chờ xử lý"; break;
+                    case "1": tt = "Đang chuẩn bị hàng"; break;
+                    case "2": tt = "Đang giao hàng"; break;
+                    case "3": tt = "Đã nhận hàng"; break;
+                    case "4": tt = "Đơn hàng bị hủy"; break;
+                }
+            }
+            <td>@tt</td>
             <td>@Html.DisplayFor(model => model.NgayTao)</td>
         </tr>
     </table>

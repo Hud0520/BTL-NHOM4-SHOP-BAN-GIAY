@@ -63,7 +63,7 @@ namespace BTL_ASP.Areas.Admin.Controllers
                     {
                         string FileName = System.IO.Path.GetFileName(f.FileName);
 
-                        string UploadPath = Server.MapPath("~/wwwroot/slides/" + FileName);
+                        string UploadPath = Server.MapPath("~/wwwroot/img/_slide" + FileName);
 
                         f.SaveAs(UploadPath);
 
@@ -114,7 +114,7 @@ namespace BTL_ASP.Areas.Admin.Controllers
                     {
                         string FileName = System.IO.Path.GetFileName(f.FileName);
 
-                        string UploadPath = Server.MapPath("~/wwwroot/slides/" + FileName);
+                        string UploadPath = Server.MapPath("~/wwwroot/img/_slide" + FileName);
 
                         f.SaveAs(UploadPath);
 

@@ -44,6 +44,7 @@ namespace BTL_NHOM4.Controllers
                     if (dhx.TrangThai == "0")
                     {
                         dhx.TrangThai = "4";
+                        dhx.GhiChu = "Người dùng hủy đơn hàng";
                         db.SaveChanges();
                         Response.Write("<script>alert('" + "Đơn hàng đã được hủy" + "')</script>");
                     }
