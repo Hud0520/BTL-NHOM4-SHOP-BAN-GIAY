@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Xác nhận đơn hàng";
+}
+<style>
+    .cf {
+        background-color: #28a745 !important;
+        padding: 30px 0 70px 0;
+        color: white;
+        border-radius: 5px;
+        font-size: 79px;
+        font-family: Roboto;
+        text-align: center;
+    }
+    .fc>div {
+        margin-top: 30px;
+        font-size: 24px;
+    }
+    .mh{
+        min-height:680px;
+        
+    }
+</style>
+<div style="background: white;" class="mh">
+    <div class="container">
+        <div class="row">
+            <div class="cf">
+                <i class="ti-check-box display-1 text-white"></i>
+            </div>
+        </div>
+        <div class="row text-center pt--30">
+            <h1>Cám ơn bạn đã đặt hàng !!!</h1>
+            <p>Chúng tôi sẽ liên hệ với bạn sớm</p>
+        </div>
+        <div class="text-center mt--20">
+            <span style="background: #ff4136; color: white; font-family: 'Bebas Neue', cursive;font-size:20px; padding:10px ">Sshop.<i class="ti-heart"></i></span>
+        </div>
+        <div class="row mt--20">
+            <div class="col-md-12">
+                <div class="htc__loadmore__btn">
+                    <a href="@Url.Action("Index","Home")">Về trang chủ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

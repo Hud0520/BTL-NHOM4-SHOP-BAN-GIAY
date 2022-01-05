@@ -1,0 +1,58 @@
+﻿@using BTL_NHOM4.Models;
+@{
+    ViewBag.Title = "Thông tin cá nhân";
+    KhachHang khDangNhap = (KhachHang)Session["userlogined"];
+}
+
+<div class="bg__white">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("menu")
+            <div class="col-md-9">
+                <form action="@Url.Action("ThongTinCaNhan","User")" method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-8 col-md-offset-2">
+                            <label for="inputEmail4">Họ</label>
+                            <input type="text" class="form-control" id="inputEmail4" name="fname" placeholder="Họ" value="@khDangNhap.Ho">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-8 col-md-offset-2">
+                            <label for="inputPassword4">Tên</label>
+                            <input type="text" class="form-control" id="inputPassword4" name="lname" placeholder="Tên" value="@khDangNhap.Ten">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-8 col-md-offset-2">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email" value="@khDangNhap.Email" readonly>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-8 col-md-offset-2">
+                            <label for="inputPassword4">Số điện thoại</label>
+                            <input type="tel" class="form-control" id="inputPassword4" name="phone" placeholder="Số điện thoại" value="@khDangNhap.SDT" required>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-8 col-md-offset-2">
+                        <label for="inputAddress2">Tuổi</label>
+                        <input type="text" class="form-control" id="inputAddress2" name="tuoi" placeholder="" value="@khDangNhap.Tuoi">
+                    </div>
+                    <div class="form-group col-md-8 col-md-offset-2">
+                        <label for="inputAddress">Địa chỉ</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="address">@khDangNhap.DiaChi</textarea>
+                    </div>
+
+
+                    <div class="form-group col-md-8 col-md-offset-2">
+
+                        <button type="submit" class="btn btn-primary">Chỉnh sửa</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
