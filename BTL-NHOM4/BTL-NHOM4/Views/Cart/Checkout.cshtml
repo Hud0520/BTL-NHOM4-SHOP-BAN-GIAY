@@ -69,20 +69,13 @@
 
                                                     </tr>
                                                 }
-                                                <tr>
-                                                    <th colspan="3" class="text-right">Tổng thành tiền</th>
+
                                                     @{ double catong = (double)@Session["TongTien"]; }
-                                                    <td class="product-subtotal">@catong.ToString("#,##0")VNĐ</td>
-                                                </tr>
-                                                <tr class="cart-subtotal">
-                                                    <th colspan="3" class="text-right">Thuế VAT (10%):</th>
-                                                    @{ double vat = catong * 0.1; }
-                                                    <td class="product-subtotal">@vat.ToString("#,##0")VNĐ</td>
-                                                </tr>
+                                                    
                                                 <tr>
                                                     <th colspan="3" class="text-right">Tổng giá trị</th>
-                                                    @{ double ttt = catong + vat;}
-                                                    <td class="product-subtotal">@ttt.ToString("#,##0")VNĐ</td>
+                                                    
+                                                    <td class="product-subtotal">@catong.ToString("#,##0")VNĐ</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -101,7 +94,7 @@
                             <div id="collapseTwo" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                     <h2 class="text-center ptb--10">Xác nhận địa chỉ</h2>
-                                    <form action="@Url.Action("DatHang","Cart")">
+                                    <form action="@Url.Action("DatHang","Cart")" method="post">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputEmail4">Họ</label>
@@ -119,25 +112,20 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputPassword4">Số điện thoại</label>
-                                                <input type="tel" class="form-control" id="inputPassword4" name="phone" placeholder="Password" value="@khDangNhap.SDT">
+                                                <input type="tel" class="form-control" id="inputPassword4" name="phone" placeholder="Số điện thoại" value="@khDangNhap.SDT" required>
                                             </div>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="inputAddress">Địa chỉ nhận hàng</label>
-                                            <input type="text" class="form-control" id="inputAddress" name="address" placeholder="1234 Main St" value="@khDangNhap.DiaChi">
+                                            <input type="text" class="form-control" id="inputAddress" name="address" placeholder="Địa chỉ" value="@khDangNhap.DiaChi" required>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="inputAddress2">Ghi chú</label>
-                                            <input type="text" class="form-control" id="inputAddress2" name="ghichu" placeholder="Apartment, studio, or floor">
+                                            <input type="text" class="form-control" id="inputAddress2" name="ghichu" placeholder="">
                                         </div>
 
                                         <div class="form-group col-md-12">
-                                            <div class="form-check ">
-                                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                                <label class="form-check-label" for="gridCheck">
-                                                    Lưu địa chỉ nhận hàng này làm mặc định
-                                                </label>
-                                            </div>
+                                            
                                             <button type="submit" class="btn btn-primary">Đặt hàng</button>
                                         </div>
 

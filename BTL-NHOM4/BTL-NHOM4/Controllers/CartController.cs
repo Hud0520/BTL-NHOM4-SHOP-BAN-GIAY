@@ -37,6 +37,7 @@ namespace BTL_NHOM4.Controllers
 
             return View(lsgiohang);
         }
+        [HttpPost]
         public ActionResult DatHang(FormCollection f)
         {
             DonHang donhangmoi = new DonHang();
@@ -47,9 +48,15 @@ namespace BTL_NHOM4.Controllers
                 Response.Write("<script>alert('" + "Phiên làm việc hết hạn" + "')</script>");
                 return View("Index", lsgiohang);
             }
+            if(lsgiohang.Count == 0)
+            {
+                Response.Write("<script>alert('" + "Giỏ hàng trống" + "')</script>");
+                return View("Index", lsgiohang);
+            }
             donhangmoi.MaKhachHang = cu.MaKhachHang;
             donhangmoi.NgayTao = DateTime.Now;
-            donhangmoi.DiaChi = f.Get("address");
+            donhangmoi.DiaChi = f.Get("address")+ " - Số điện thoại người nhận : "+ f.Get("phone");
+            donhangmoi.GhiChu = f.Get("ghichu");
             donhangmoi.TrangThai = ""+0;
             db.DonHang.Add(donhangmoi);
             db.SaveChanges();
@@ -59,12 +66,18 @@ namespace BTL_NHOM4.Controllers
                 ctdh.MaDonHang = donhangmoi.MaDonHang;
                 ctdh.MaGiay = item.iMaGiay;
                 ctdh.SoLuong = item.iSoLuong;
-                ctdh.Gia = (decimal?)item.dDonGia;
+                ctdh.Gia = (float?)(decimal?)item.dDonGia;
                 db.ChiTietDonHang.Add(ctdh);
             }
             db.SaveChanges();
             Session["GioHang"] = null;
+            Session["TongSoLuong"] = null;
+            Session["TongTien"] = null;
             return RedirectToAction("XacNhanDonHang");
+        }
+        public ActionResult XacNhanDonHang()
+        {
+            return View();
         }
         public List<GioHang> Laygiohang()
         {
@@ -82,20 +95,39 @@ namespace BTL_NHOM4.Controllers
 
         public ActionResult ThemGioHang(int iMaGiay, string url, string qtybutton)
         {
+            Giay kho = db.Giay.SingleOrDefault(i => i.MaGiay == iMaGiay);
             List<GioHang> lsgiohang =Laygiohang();
             GioHang sanpham = lsgiohang.Find(i => i.iMaGiay == iMaGiay);
             int a;
             bool flag = int.TryParse(qtybutton, out a);
+            
             if (sanpham == null)
             {
-                sanpham = new GioHang(iMaGiay);
-                if (flag) { sanpham.iSoLuong = a; }
-                lsgiohang.Add(sanpham);
+                if(kho.SoLuong < a)
+                {
+                    Response.Write("<script>alert('" + "Hết hàng" + "')</script>");
+                }
+                else
+                {
+                    sanpham = new GioHang(iMaGiay);
+                    if (flag) { sanpham.iSoLuong = a; }
+                    lsgiohang.Add(sanpham);
+                }
+                
             }
             else
             {
-                if (flag) { sanpham.iSoLuong += a; } else {
-                    sanpham.iSoLuong++;
+                if (kho.SoLuong < sanpham.iSoLuong + a)
+                {
+                    Response.Write("<script>alert('" +"Không đủ số lượng trong kho" + "')</script>");
+                }
+                else
+                {
+                    if (flag) { sanpham.iSoLuong += a; }
+                    else
+                    {
+                        sanpham.iSoLuong++;
+                    }
                 }
                 
             }
