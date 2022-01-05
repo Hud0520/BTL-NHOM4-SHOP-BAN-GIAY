@@ -66,17 +66,10 @@ namespace BTL_NHOM4.Controllers
             { ViewData["LoiDK2"] = "Họ tên không được để trống"; flag = false; }
             if (String.IsNullOrEmpty(dk.Email))
             { ViewData["LoiDK3"] = "Email không được để trống"; flag = false; }
-            else
+            var iex = db.KhachHang.SingleOrDefault(i => i.Email == dk.Email);
+            if (iex != null)
             {
-                var iex = db.KhachHang.SingleOrDefault(i => i.Email == dk.Email);
-                if (iex != null)
-                {
-                    ViewData["LoiDK3"] = "Email đã được sửa dụng"; flag = false;
-                }
-                else if(!System.Text.RegularExpressions.Regex.IsMatch(dk.Email, @"^\w+[-,.]*\w+@\w+\.\w+$"))
-                {
-                    ViewData["LoiDK3"] = "Không đúng cấu trúc hộp thư"; flag = false;
-                }
+                ViewData["LoiDK3"] = "Email đã được sửa dụng"; flag = false;
             }
             if (String.IsNullOrEmpty(dk.MatKhau))
             { ViewData["LoiDK4"] = "Mật khẩu không được để trống"; flag = false; }
@@ -102,7 +95,7 @@ namespace BTL_NHOM4.Controllers
         }
         public ActionResult DangXuat()
         {
-            Session.Clear();
+            Session["userLogined"] = null;
             return RedirectToAction("Index", "Home");
         }
     }

@@ -4,118 +4,72 @@
     ViewBag.Title = "Cá nhân";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
-<div class="bg__white">
-    <div class="container" style="min-height:560px">
-        <div class="row">
-            @Html.Partial("menu")
-            <div class="col-md-9">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Mã đơn hàng</th>
-                            <th scope="col">Trạng thái</th>
-                            <th scope="col">Ngày tạo</th>
-                            <th scope="col">Địa chỉ nhận hàng</th>
-                            <th scope="col">Tổng tiền</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 p--0">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center active">
+                    Đơn hàng
+                    <span class="badge badge-primary badge-pill">@ViewBag.Count</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Thông tin cá nhân
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Đổi mật khẩu
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Mã đơn hàng</th>
+                        <th scope="col">Trạng thái</th>
+                        <th scope="col">Tổng tiền</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
 
-                        @foreach (var item in Model)
+                        if (item.TrangThai == "4")
                         {
-                            string tt = "";
-                            switch (item.TrangThai)
-                            {
-                                case "0": tt = "Chờ xử lý"; break;
-                                case "1": tt = "Đang chuẩn bị hàng"; break;
-                                case "2": tt = "Đang giao hàng"; break;
-                                case "3": tt = "Đã nhận hàng"; break;
-                                case "4": tt = "Đơn hàng bị hủy"; break;
-                            }
-                            string tot = item.TongTien.ToString("#,##0");
-                            if (item.TrangThai == "3")
-                            {
-                                <tr class="bg-success">
-                                    <td>HD @item.MaDonHang</td>
-                                    <td>@tt</td>
-                                    <td>@item.NgayTao</td>
-                                    <td>@item.DiaChi</td>
-                                    <td>@tot</td>
+                            <tr class="bg-success">
+                                <td>HD @item.MaDonHang</td>
+                                <td>@item.TrangThai</td>
+                                <td>@item.TongTien</td>
+                                <td><a class="btn btn-primary" href="@Url.Action()">Xem chi tiết</a></td>
+                            </tr>
 
-                                    <td>
+                        }
+                        else if (item.TrangThai == "3")
+                        {
+                            <tr class="bg-warning">
+                                <td>HD @item.MaDonHang</td>
+                                <td>@item.TrangThai</td>
+                                <td>@item.TongTien</td>
+                                <td><a class="btn btn-primary" href="@Url.Action()">Xem chi tiết</a></td>
+                            </tr>
 
-                                        <a class="btn btn-primary" href="@Url.Action()" title="Chi tiết"><i class="ti-eye"></i></a>
-                                    </td>
-                                </tr>
-
-                            }
-                            else if (item.TrangThai == "4")
-                            {
-                                <tr class="bg-warning">
-                                    <td>HD @item.MaDonHang</td>
-                                    <td>@tt</td>
-                                    <td>@item.NgayTao</td>
-                                    <td>@item.DiaChi</td>
-                                    <td>@tot</td>
-                                    <td>
-
-                                        <a class="btn btn-primary" href="@Url.Action()" title="Chi tiết"><i class="ti-eye"></i></a>
-                                    </td>
-                                </tr>
-
-                            }
-                            else if (item.TrangThai == "0")
-                            {
-                                <tr>
-                                    <td>HD @item.MaDonHang</td>
-                                    <td>@tt</td>
-                                    <td>@item.NgayTao</td>
-                                    <td>@item.DiaChi</td>
-                                    <td>@tot</td>
-                                    <td>
-                                        <a class="btn btn-danger" role="button" onclick="huyDonHang(@item.MaDonHang)" title="Hủy đơn"><i class="ti-close"></i></a>
-                                        <a class="btn btn-primary" href="@Url.Action()" title="Chi tiết"><i class="ti-eye"></i></a>
-                                    </td>
-                                </tr>
-
-                            }
-                            else
-                            {
-                                <tr class="bg-primary">
-                                    <td>HD @item.MaDonHang</td>
-                                    <td>@tt</td>
-                                    <td>@item.NgayTao</td>
-                                    <td>@item.DiaChi</td>
-                                    <td>@tot</td>
-                                    <td>
-                                        
-                                        <a class="btn btn-primary" href="@Url.Action()" title="Chi tiết"><i class="ti-eye"></i></a>
-                                    </td>
-                                </tr>
-
-                            }
+                        }
+                        else
+                        {
+                            <tr class="bg-primary">
+                                <td>HD @item.MaDonHang</td>
+                                <td>@item.TrangThai</td>
+                                <td>@item.TongTien</td>
+                                <td><a class="btn btn-primary" href="@Url.Action()">Xem chi tiết</a></td>
+                            </tr>
 
                         }
 
-                    </tbody>
-                </table>
-                <div class="col-md-12">
-                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
-                    <div class="text-center">
-                        @Html.PagedListPager(Model, page => Url.Action("Index",
-                            new { page }))
-                    </div>
-                </div>
-            </div>
+                    }
+
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-<script>
-    function huyDonHang(p) {
-        if (confirm("Bạn có muốn hủy đơn hàng HD" + p) == true) {
-            window.location.href ='@Url.Action("Index","User",new { })'+'?mdh=' + p;
-        }
-    }
-</script>
 

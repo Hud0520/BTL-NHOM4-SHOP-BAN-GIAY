@@ -71,13 +71,22 @@
                                 <h2>Tạm Tính</h2>
                                 <table>
                                     <tbody>
-
+                                        <tr class="cart-subtotal">
+                                            <th>Tổng tiền</th>
                                             @{ double catong = (double)@Session["TongTien"]; }
+                                            <td><span class="amount">@catong.ToString("#,##0")VNĐ</span></td>
+                                        </tr>
+                                        <tr class="cart-subtotal">
+                                            <th>Thuế VAT (10%):</th>
+                                            @{ double vat = catong * 0.1 ; }
+                                            <td><span class="amount">@vat.ToString("#,##0")VNĐ</span></td>
+                                        </tr>
                                         
                                         <tr class="order-total">
                                             <th>Tổng giá trị</th>
                                             <td>
-                                                <strong><span class="amount">@catong.ToString("#,##0")VNĐ</span></strong>
+                                                @{ double ttt = catong * 1.1;}
+                                                <strong><span class="amount">@ttt.ToString("#,##0")VNĐ</span></strong>
                                             </td>
                                         </tr>
                                     </tbody>

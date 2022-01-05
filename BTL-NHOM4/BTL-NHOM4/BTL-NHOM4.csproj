@@ -685,9 +685,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="wwwroot\anhtieudes\TT1.jpg" />
-    <Content Include="wwwroot\anhtieudes\TT2.jpg" />
-    <Content Include="wwwroot\backgrounds\background.jpg" />
     <Content Include="wwwroot\css\bootstrap.css" />
     <Content Include="wwwroot\css\bootstrap.min.css" />
     <Content Include="wwwroot\css\core.css" />
@@ -767,21 +764,11 @@
     <Content Include="wwwroot\js\vendor\jquery-1.12.0.min.js" />
     <Content Include="wwwroot\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="wwwroot\js\waypoints.min.js" />
-    <Content Include="wwwroot\sanphams\giayda1.jpg" />
-    <Content Include="wwwroot\sanphams\giayda2.jpg" />
-    <Content Include="wwwroot\sanphams\giayda3.jpg" />
-    <Content Include="wwwroot\sanphams\giayda4.jpg" />
-    <Content Include="wwwroot\sanphams\giayda6.jpg" />
-    <Content Include="wwwroot\sanphams\giayda7.jpg" />
-    <Content Include="wwwroot\slides\slide1.jpg" />
-    <Content Include="wwwroot\slides\slide2.jpg" />
-    <Content Include="wwwroot\slides\slide3.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Assets\img\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="wwwroot\khachhangs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Assets\ckeditor\bender-runner.config.json" />
@@ -880,10 +867,6 @@
     <Content Include="Views\Login\DangKy.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\menu.cshtml" />
-    <Content Include="Views\User\ThongTinCaNhan.cshtml" />
-    <Content Include="Views\Cart\XacNhanDonHang.cshtml" />
-    <Content Include="Views\User\DoiMatKhau.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
