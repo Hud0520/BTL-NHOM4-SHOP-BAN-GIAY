@@ -87,4 +87,5 @@ D:\HAUI\K7\LTW\BTL-NHOM4-SHOP-BAN-GIAY\BTL-NHOM4\BTL-NHOM4\bin\EntityFramework.S
 D:\HAUI\K7\LTW\BTL-NHOM4-SHOP-BAN-GIAY\BTL-NHOM4\BTL-NHOM4\obj\Debug\BTL-NHOM4.csproj.AssemblyReference.cache
 <<<<<<< HEAD
 =======
+
 >>>>>>> parent of 01479ec (update)
