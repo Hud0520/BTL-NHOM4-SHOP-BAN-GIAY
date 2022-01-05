@@ -24,7 +24,7 @@ namespace BTL_NHOM4.Models
         {
             modelBuilder.Entity<ChiTietDonHang>()
                 .Property(e => e.Gia)
-                .HasPrecision(19, 4);
+                ;
 
             modelBuilder.Entity<Giay>()
                 .Property(e => e.KichThuoc)
